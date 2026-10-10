@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "motion": "^12.23.0",
-    "next": "15.5.4",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "next": "^15.5.9",
+    "react": "^19.1.2",
+    "react-dom": "^19.1.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -22,11 +22,11 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.5.4",
+    "eslint-config-next": "^15.5.9",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
   "engines": {
-    "node": ">=18.18.0"
+    "node": "22.x"
   }
 }
