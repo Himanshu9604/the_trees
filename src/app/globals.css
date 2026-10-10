@@ -1,0 +1,293 @@
+@import "tailwindcss";
+
+/*
+ * The Tree — editorial luxury identity.
+ * Porcelain canvas, espresso text, oxblood for dramatic brand moments,
+ * antique champagne as a restrained accent.
+ */
+@theme {
+  /* The Tree — design tokens */
+  --color-white: #ffffff;
+  --color-lavender: #f2eeff;
+  --color-periwinkle: #e6e4ff;
+  --color-mist: #f7f8ff; /* light blue-white */
+  --color-violet: #6747f5;
+  --color-violet-text: #5034d9; /* violet for small text, AA on white */
+  --color-royal: #3524f4;
+  --color-navy: #17213d; /* headings / primary text */
+  --color-slate: #59627d; /* secondary text */
+  --color-line: #e7e8f3; /* subtle borders */
+
+  /* Aliases: older component class names resolve to the same system. */
+  --color-ivory: var(--color-white);
+  --color-paper: var(--color-white);
+  --color-porcelain: var(--color-white);
+  --color-cream: var(--color-lavender);
+  --color-sand: var(--color-line);
+  --color-stone: var(--color-line);
+  --color-stone-soft: var(--color-mist);
+  --color-navy-deep: var(--color-navy);
+  --color-wine: var(--color-violet);
+  --color-wine-deep: var(--color-royal);
+  --color-oxblood: var(--color-violet);
+  --color-oxblood-deep: var(--color-royal);
+  --color-forest: var(--color-violet);
+  --color-forest-soft: var(--color-royal);
+  --color-emerald: var(--color-violet);
+  --color-ink: var(--color-navy);
+  --color-espresso: var(--color-navy);
+  --color-charcoal: var(--color-navy);
+  --color-body: var(--color-slate);
+  --color-ink-muted: var(--color-slate);
+  --color-muted: var(--color-slate);
+  --color-champagne: var(--color-violet);
+  --color-champagne-soft: var(--color-periwinkle);
+  --color-champagne-text: var(--color-violet-text);
+  --color-brass: var(--color-violet);
+  --color-brass-soft: var(--color-periwinkle);
+  --color-brass-text: var(--color-violet-text);
+  --color-bronze: var(--color-violet-text);
+  --color-gold: var(--color-violet);
+  --color-gold-light: var(--color-periwinkle);
+  --color-gold-dark: var(--color-violet-text);
+
+  --font-serif: var(--font-jakarta), "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-jakarta), "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-soft: 0 24px 60px -28px rgba(53, 36, 244, 0.22), 0 8px 24px -16px rgba(23, 33, 61, 0.12);
+  --shadow-float: 0 30px 80px -30px rgba(53, 36, 244, 0.35), 0 12px 30px -18px rgba(23, 33, 61, 0.18);
+  --radius-panel: 1.25rem;
+
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-kenburns: kenburns 26s var(--ease-luxe) both;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-drift: drift 30s ease-in-out infinite alternate;
+  --animate-scroll-cue: scroll-cue 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+
+  @keyframes kenburns {
+    from {
+      transform: scale(1.16);
+    }
+    to {
+      transform: scale(1.02);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  @keyframes drift {
+    from {
+      transform: scale(1.06) translate3d(0, 0, 0);
+    }
+    to {
+      transform: scale(1.12) translate3d(-1.5%, -1%, 0);
+    }
+  }
+  @keyframes scroll-cue {
+    0% {
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+    45% {
+      transform: scaleY(1);
+      transform-origin: top;
+    }
+    55% {
+      transform: scaleY(1);
+      transform-origin: bottom;
+    }
+    100% {
+      transform: scaleY(0);
+      transform-origin: bottom;
+    }
+  }
+}
+
+@utility container-site {
+  width: 100%;
+  max-width: 88rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (width >= 640px) {
+    padding-inline: 2rem;
+  }
+  @media (width >= 1024px) {
+    padding-inline: 3rem;
+  }
+}
+
+/* Micro-label: widely tracked uppercase. */
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+/* Small editorial caption: "Fig. 01 — …" */
+@utility caption {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+/* Headline: Plus Jakarta Sans, semibold, tight but readable. */
+@utility display {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+/* Violet-to-blue text highlight. */
+@utility text-gradient {
+  background-image: linear-gradient(100deg, var(--color-violet) 0%, var(--color-royal) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Soft lavender-to-periwinkle surface. */
+@utility bg-aurora {
+  background-color: var(--color-mist);
+  background-image:
+    radial-gradient(60% 70% at 85% 20%, rgba(103, 71, 245, 0.16), transparent 70%),
+    radial-gradient(50% 60% at 10% 90%, rgba(53, 36, 244, 0.1), transparent 70%),
+    linear-gradient(160deg, var(--color-lavender) 0%, var(--color-periwinkle) 55%, var(--color-mist) 100%);
+}
+
+/* Hairline link underline that draws in on hover. */
+@utility link-draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.6s var(--ease-luxe);
+  padding-bottom: 0.15em;
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+@utility link-line {
+  background-image: linear-gradient(currentColor, currentColor), linear-gradient(currentColor, currentColor);
+  background-size:
+    100% 1px,
+    0 1px;
+  background-position:
+    0 100%,
+    0 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 0.2em;
+  transition: background-size 0.6s var(--ease-luxe);
+  &:hover,
+  &:focus-visible {
+    background-size:
+      0 1px,
+      100% 1px;
+  }
+}
+
+/* Kept for inner-page panels: a very faint fine lattice. */
+@utility pattern-lattice {
+  background-image:
+    linear-gradient(45deg, currentColor 1px, transparent 1px), linear-gradient(-45deg, currentColor 1px, transparent 1px);
+  background-size: 28px 28px;
+  color: var(--color-champagne);
+}
+
+@utility grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.07;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+}
+
+@utility section-y {
+  padding-block: 6rem;
+  @media (width >= 1024px) {
+    padding-block: 9rem;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-white);
+    color: var(--color-slate);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  :target {
+    scroll-margin-top: 6rem;
+  }
+
+  ::selection {
+    background: var(--color-violet);
+    color: var(--color-white);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-violet);
+    outline-offset: 4px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--color-navy);
+  }
+
+  /* Emphasised words inside headings become a violet-to-blue highlight. */
+  :is(h1, h2, h3, .display) em {
+    font-style: normal;
+    background-image: linear-gradient(100deg, var(--color-violet), var(--color-royal));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
